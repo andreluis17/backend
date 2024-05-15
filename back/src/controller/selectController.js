@@ -10,9 +10,10 @@ router.get('/', async(request,response) => {
             response.status(204).end();    
         }else{
             response.status(200).json(results)
+            console.log(results)
         }        
     }catch(err){
-        response.status(500).send({mensagem:'erro', erro: `${error}`})
+        response.status(500).send({mensagem:'erro', erro: `${err}`})
     }
 });
 

@@ -3,24 +3,24 @@ import express from 'express'
 
 //  feito
 import cadastro from './controller/cadastroController.js'
-import delet from './controller/deleteController.js'
-import alterar from './controller/alterarController.js'
 import select from './controller/selectController.js'
-import filtro from './controller/filtroController.js'
 
 //  fazendo
+import filtro from './controller/filtroController.js'
+import delet from './controller/deleteController.js'
+import alterar from './controller/alterarController.js'
 
 //express
  const router = express()
 
 // feito
-router.use('/cadastro', cadastro)
-router.use('/delete', delet)
-router.use('/alterar', alterar) 
+router.use('/cadastro', cadastro) 
 router.use('/select', select)
-router.use('/filtro', filtro)
+
 
 // fazendo
-
+router.use('/filtro', filtro)
+router.use('/delet', delet)
+router.use('/alterar', alterar)
 
  export default router
