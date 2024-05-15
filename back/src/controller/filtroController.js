@@ -30,7 +30,7 @@ router.post('/', async (request, response) => {
                 response.status(404).send('Usuário não cadastrado')
             }
     }catch{
-        response.status(500).send({mensagem:'erro', erro: `${error}`})
+        response.status(500).send({mensagem:'erro', erro: `${err}`})
     }
 })
 export default router

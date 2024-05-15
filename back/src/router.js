@@ -4,11 +4,11 @@ import express from 'express'
 //  feito
 import cadastro from './controller/cadastroController.js'
 import select from './controller/selectController.js'
+import alterar from './controller/alterarController.js'
 
 //  fazendo
 import filtro from './controller/filtroController.js'
 import delet from './controller/deleteController.js'
-import alterar from './controller/alterarController.js'
 
 //express
  const router = express()
@@ -16,11 +16,10 @@ import alterar from './controller/alterarController.js'
 // feito
 router.use('/cadastro', cadastro) 
 router.use('/select', select)
-
+router.use('/alterar', alterar)
 
 // fazendo
 router.use('/filtro', filtro)
 router.use('/delet', delet)
-router.use('/alterar', alterar)
 
  export default router

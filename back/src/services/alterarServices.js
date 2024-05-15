@@ -1,14 +1,16 @@
-import db from '../repository/connection.js'
+import db from "../repository/connection.js"
 
-async function alterar(smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs){
+async function alterar(smp, veiculo, motorista, telefone,f,ag,au,entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs,id){
 
-    const conn = 'UPDATE tbl_viagem SET smp = ?, veiculo = ?, motorista = ?, telefone = ?, f = ? , entrega = ?, tecn = ?, valor = ?, isca = ?, datainicio = ? , datafinal = ?, destino = ?, status = ?, obs = ? WHERE id = ?';
+  const sql = 'UPDATE tbl_viagens SET smp = ?, veiculo = ?, motorista = ?, telefone = ?, f = ? , ag = ?, au = ?, entrega = ?, tecn = ?, valor = ?, isca = ?, datainicio = ? , datafinal = ?, destino = ?, status = ?, obs = ? WHERE id_viagem = ?';
 
-    const dados = [smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs]
-  
-    const sql = await database.connect();
+  const dados = [smp, veiculo, motorista, telefone,f,ag,au,entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs,id]
+  console.log(dados)
 
-    sql.query(conn, dados); 
-    sql.end(); 
-  }
+  const conn = await db.connect();
+
+  conn.query(sql, dados); 
+
+  conn.end(); 
+}
 export default {alterar};
