@@ -1,10 +1,10 @@
 import db from '../repository/connection.js';
 
-async function delet(smp){
+async function delet(id){
 
-    const sql = 'DELETE FROM viagens WHERE smp = ?';
+    const sql = 'DELETE FROM tbl_viagens WHERE id_viagem = ?';
 
-    const dados = [smp];
+    const dados = [id];
 
     const conn = await db.connect();
 

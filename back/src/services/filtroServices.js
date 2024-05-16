@@ -1,15 +1,16 @@
 import db from '../repository/connection.js';
 
-async function filtro(smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs){
-    const sql = 'SELECT * from tbl_viagens WHERE smp = ? or veiculo = ? motorista or telefone = ? or f = ? or entrega = ? or tecn = ? or valor = ? or isca = ? or datainicio = ? or datafinal = ? or destino = ? or status = ? or obs = ?'
+async function filtro(smp, veiculo, motorista, telefone, f, entrega, tecn, valor, isca, datainicio, datafinal, destino, status, obs) {
+    const sql = 'SELECT * FROM tbl_viagens WHERE smp = ? OR veiculo = ? OR motorista = ? OR telefone = ? OR f = ? OR entrega = ? OR tecn = ? OR valor = ? OR isca = ? OR datainicio = ? OR datafinal = ? OR destino = ? OR status = ? OR obs = ?';
 
-    const dados = (smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs)
+    const dados = [smp, veiculo, motorista, telefone, f, entrega, tecn, valor, isca, datainicio, datafinal, destino, status, obs];
+    
 
-    const conn = await database.connect();
-    const [rows] = await conn.query(sql,dados)
+    const conn = await db.connect();
+    const [rows] = await conn.query(sql, dados);
     conn.end();
 
-    return rows
+    return rows;
 }
 
-export default {filtro};
+export default { filtro };

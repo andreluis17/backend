@@ -7,7 +7,7 @@ router.put('/', async (request, response) => {
     const {smp, veiculo, motorista, telefone, f, ag,au,entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs,id,} = request.body
     console.log(smp, veiculo, motorista, telefone, f, ag,au,entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs,id)
 
-    if(id === '' ){
+    if(id === undefined || id === "" ){
         return(response.status(422).send('Campo em branco'))
     }
 else{

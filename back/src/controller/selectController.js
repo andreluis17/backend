@@ -13,7 +13,7 @@ router.get('/', async(request,response) => {
             console.log(results)
         }        
     }catch(err){
-        response.status(500).send({mensagem:'erro', erro: `${err}`})
+        response.status(500).send('erro')
     }
 });
 

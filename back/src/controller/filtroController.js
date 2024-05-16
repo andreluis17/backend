@@ -3,34 +3,38 @@ import db from '../services/filtroServices.js'
 
 const router = express.Router()
 
-router.post('/', async (request, response) => {
+router.get('/', async (request, response) => {
     const {smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs} = request.body
+    
 
     try{
-        await db.filtro(smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs)
-        if(filtro.length > 0){
+        const results = await db.filtro(smp, veiculo, motorista, telefone, f, entrega,tecn,valor,isca,datainicio,datafinal,destino,status,obs)
+        if(results.length > 0){
             console.log('results controller >>> ', results)
 
-            response.status(200).json({smp: results.smp,
-                veiculo: results.veiculo,
-                motorista: results.motorista,
-                telefone: results.telefone,
-                f: results.f,
-                entrega: results.entrega,
-                tecn: results.tecn,
-                valor:results.valor,
-                isca: results.isca,
-                datainicio: results.datainicio,
-                datafinal: results.datafinal,
-                destino: results.destino,
-                status: results.status,
-                obs: results.obs
+            const result = results[0]
+
+            response.status(200).json({
+                smp: result.smp,
+                veiculo: result.veiculo,
+                motorista: result.motorista,
+                telefone: result.telefone,
+                f: result.f,
+                entrega: result.entrega,
+                tecn: result.tecn,
+                valor:result.valor,
+                isca: result.isca,
+                datainicio: result.datainicio,
+                datafinal: result.datafinal,
+                destino: result.destino,
+                status: result.status,
+                obs: result.obs
 
             })} else{
                 response.status(404).send('Usuário não cadastrado')
             }
-    }catch{
-        response.status(500).send({mensagem:'erro', erro: `${err}`})
+    }catch(err){
+        response.status(500).send({mensagem:'erro', err: `${err}`})
     }
 })
 export default router
